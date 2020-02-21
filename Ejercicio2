@@ -1,0 +1,19 @@
+tad Pila (A:set) where
+    empty   : Pila A
+    push    : A -> Pila A -> Pila A
+    isEmpty : Pila A -> Bool
+    top     : Pila A -> A
+    pop     : Pila A -> Pila A
+    _____________________________________
+    isEmpty empty               = True
+    isEmpty (push x empty)      = False
+    top (push x empty)          = x
+    top (push x (push y empty)) = x
+    pop empty                   = empty
+    pop (push x empty)          = empty
+    _____________________________________
+    empty                       = <>
+    push x <x1..xn>             = <x,x1,xn>
+    isEmpty <x1..xn>            = True si n = 0, False en caso contrario
+    top <x1..xn>                = x1
+    pop <x1..xn>                = <x2..xn>
