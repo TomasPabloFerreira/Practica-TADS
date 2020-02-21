@@ -1,0 +1,32 @@
+tad Lista (A:set) where
+    nil     : Lista A
+    cons    : A -> Lista A -> Lista A
+    head    : Lista A -> A
+    tail    : Lista A -> Lista A
+    _________________________
+    -- Apartado a
+    head (cons x nil)           = x
+    head (cons x (cons y nil))  = head (cons x nil)
+    tail (cons x nil)           = nil
+    tail (cons x (cons y nil))  = y
+    _________________________
+    -- Apartado b
+    nil                         = <>
+    cons x <x1..xn>             = <x,x1..xn>
+    head <x1..xn>               = x1
+    tail <x1..xn>               = <x2..xn>
+    _________________________
+    -- Apartado c
+    inL : List A -> A -> Bool
+    inL nil x               = False
+    inL (cons x nil) x      = true
+    inL (cons y nil) x      = inL nil x
+    _________________________
+    -- Apartado d
+    delX : List A -> A -> List A
+    delX nil x              = nil
+    delX (cons x nil) x     = nil
+    delX (cons y nil) x    = cons y nil
+    delX (cons x (cons x nil)) = nil
+    delX (cons y (cons x nil)) = cons y nil
+    delX (cons x (cons y nil)) = cons y nil
