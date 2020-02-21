@@ -1,0 +1,25 @@
+tad Conjunto (A:set) where
+    vacio       : Conjunto A
+    insertar    : A -> Conjunto A -> Conjunto A
+    borrar      : A -> Conjunto A -> COnjunto A
+    esVacio     : Conjunto A -> Bool
+    union       : Conjunto A -> Conjunto A -> Conjunto A
+    interseccion: Conjunto A -> Conjunto A -> Conjunto A
+    resta       : Conjunto A -> Conjunto A -> Conjunto A
+    ________________________________________________________
+    insertar x (insertar x c) = insertar x c
+    insertar x (insertar y c) = insertar y (insetar x c)
+    borrar x (insertar x c)   = c
+    borrar y (insertar x c)   = insertar x (borrar y c)
+    esVacio  vacio            = True
+    esVacio (insertar x vacio)= False
+    union vacio vacio         = vacio
+    union c vacio             = c
+    union vacio c             = c
+    interseccion vacio vacio  = vacio
+    interseccion vacio c      = vacio
+    interseccion c vacio      = vacio
+    interseccion c c          = c
+    resta c vacio             = c
+    resta vacio c             = vacio
+    resta c c'                = resta c (interseccion c c')
