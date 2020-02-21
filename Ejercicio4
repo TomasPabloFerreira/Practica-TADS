@@ -1,0 +1,24 @@
+tad PriorityQueue A as PQ A where
+    vacia       : PQ A
+    poner       : A -> PQ A -> PQ A
+    primero     : PQ A -> A
+    sacar       : PQ A -> PQ A
+    esVacia     : PQ A -> Bool
+    union       : PQ A -> PQ A -> PQ A
+    _____________________________________
+    esVacia vacia                   = True
+    esVacia (poner x vacia)         = False
+    primero (poner x vacia)         = x
+    sacar (poner x vacia)           = vacia
+    union pq vacia                  = pq
+    union vacia pq                  = pq
+    union (poner x vacia) (poner y vacia) = poner x (poner y vacia)
+    _____________________________________
+    vacia                           = <>
+    poner (x,xx) <(1,x1)..(n,xn)>   = <(1,x1)..(x,xx)..(n,xn)>
+    primero <(1,x1)..(n,xn)>        = x1
+    sacar <(1,x1)..(n,xn)>          = <(2,x2)..(n,xn)>
+    esVacia <(1,x1)..(n,xn)>        = True si n=0, False en caso contrario
+    union <(1,x1)..(n,xn)> <(2,y2)..(n+1,yn)> 
+                            = <(1,x1),(2,y2)..(n,xn),(n+1,yn)>
+
